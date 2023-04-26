@@ -1,4 +1,4 @@
-class Api::V1::ActionsController < ApplicationController
+class Api::V1::ActionsController < Api::V1::ApplicationController
   before_action :set_trip, only: %i[create]
 
   def create

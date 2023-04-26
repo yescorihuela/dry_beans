@@ -1,4 +1,4 @@
-class Api::V1::TripsController < ApplicationController
+class Api::V1::TripsController < Api::V1::ApplicationController
   before_action :set_trip, only: %i[show complete]
   before_action :set_route, only: %i[show complete]
 
