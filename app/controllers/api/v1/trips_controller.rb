@@ -1,13 +1,17 @@
 class Api::V1::TripsController < Api::V1::ApplicationController
   before_action :set_trip, only: %i[show complete]
-  before_action :set_route, only: %i[show complete]
+  before_action :set_route, only: %i[create show complete]
 
   def create
-    @trip = @route.trips.build(set_params)
-    if @trip.save!
-      render json: { ok: true, trip: @trip }, status: :created
+    if @route
+      @trip = @route.trips.build
+      if @trip.save!
+        render json: { ok: true, trip: @trip }, status: :created
+      else
+        render json: { ok: false, errors: @trip.errors.full_messages }, status: :unprocessable_entity
+      end
     else
-      render json: { ok: false, errors: @trip.errors.full_messages }, status: :unprocessable_entity
+      render json: {ok: false, errors: "inactive route"}, status: :unprocessable_entity
     end
   end
 
@@ -21,14 +25,10 @@ class Api::V1::TripsController < Api::V1::ApplicationController
 
   private
   def set_route
-    @route = Route.find_by(id: params[:route_id])
+    @route = Route.find_by(id: params[:route_id], active: true)
   end
 
   def set_trip
     @trip = Trip.find_by(id: params[:id])
-  end
-
-  def set_params
-    params.require(:trip).permit(:completed)
   end
 end
