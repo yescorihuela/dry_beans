@@ -10,8 +10,7 @@ Rails.application.routes.draw do
           member do
             patch 'complete', to: 'trips#complete'
           end
-          resources :actions do
-          end
+          resources :actions, only: [:create]
         end
       end
     end
