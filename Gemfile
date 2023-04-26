@@ -48,4 +48,9 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
+end
+
 gem 'fast_jsonapi', '~> 1.0', '>= 1.0.16'
