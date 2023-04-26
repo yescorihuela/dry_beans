@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :routes, only: [:create, :show] do
-        resources :trips, only: [:create, :show] do
+        resources :trips, only: [:create] do
           member do
             patch 'complete', to: 'trips#complete'
           end
