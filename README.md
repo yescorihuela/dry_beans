@@ -28,6 +28,6 @@ The routes are described as following below:
 
 ### To be defined?
 
-- Dockerization
-- Add pagination to json results
-- Add more tests
+- Dockerization.
+- Add pagination to json results and better contract to show the results.
+- Add more tests.
