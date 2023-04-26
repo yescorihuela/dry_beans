@@ -46,3 +46,4 @@ group :development do
   # gem "spring"
 end
 
+gem 'fast_jsonapi', '~> 1.0', '>= 1.0.16'
