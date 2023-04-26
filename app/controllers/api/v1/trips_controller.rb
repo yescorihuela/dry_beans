@@ -12,7 +12,7 @@ class Api::V1::TripsController < Api::V1::ApplicationController
   end
 
   def complete
-    if @trip.update(set_params)
+    if @trip.update(completed: true)
       render json: { ok: true, trip: @trip }, status: :ok
     else
       render json: { ok: false, errors: @trip.errors.full_messages }, status: :unprocessable_entity

@@ -2,6 +2,7 @@ class Action < ApplicationRecord
   OPERATION_OPTIONS = %w(pick_up delivery)
 
   belongs_to :trip
+
   validates :operation, presence: true
   validates :operation, inclusion: {in: OPERATION_OPTIONS }
 
